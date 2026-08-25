@@ -1,0 +1,107 @@
+=== TASK 2: EXPLORATORY DATA ANALYSIS ===
+
+=== STEP 1: RESEARCH QUESTIONS ===
+1. How many books are in the dataset?
+2. What are the most and least common ratings?
+3. What is the price range (min, max, average)?
+4. Do higher-rated books cost more on average?
+5. Are there missing values, duplicates, or bad data?
+
+=== STEP 2: DATA STRUCTURE ===
+Shape (rows, columns): (60, 4)
+
+Column names and data types:
+title       str
+price       str
+rating      str
+page      int64
+dtype: object
+
+First 5 rows:
+                                   title    price rating  page
+0                   A Light in the Attic  Â£51.77  Three     1
+1                     Tipping the Velvet  Â£53.74    One     1
+2                             Soumission  Â£50.10    One     1
+3                          Sharp Objects  Â£47.82   Four     1
+4  Sapiens: A Brief History of Humankind  Â£54.23   Five     1
+
+Last 5 rows:
+                                                title    price rating  page
+55        The Torch Is Passed: A Harding Family Story  Â£19.09    One     3
+56                    The Secret of Dreadwillow Carse  Â£56.13    One     3
+57  The Pioneer Woman Cooks: Dinnertime: Comfort C...  Â£56.41    One     3
+58                                The Past Never Ends  Â£56.50   Four     3
+59  The Natural History of Us (The Fine Art of Pre...  Â£45.22  Three     3
+
+=== STEP 3: DATA QUALITY CHECK ===
+Missing values per column:
+title     0
+price     0
+rating    0
+page      0
+dtype: int64
+
+Duplicate rows: 0
+
+=== STEP 4: DATA CLEANING ===
+Created column: price_num (numeric price)
+Created column: rating_num (1 to 5)
+
+=== STEP 5: SUMMARY STATISTICS ===
+       price_num  rating_num
+count  60.000000   60.000000
+mean   35.002667    3.000000
+std    14.553082    1.507046
+min    12.840000    1.000000
+25%    22.040000    1.750000
+50%    33.485000    3.000000
+75%    50.142500    4.000000
+max    57.310000    5.000000
+
+Rating counts:
+rating_num
+1    15
+2     8
+3    13
+4    10
+5    14
+Name: count, dtype: int64
+
+Average price by rating:
+rating_num
+1    34.311333
+2    33.867500
+3    38.808462
+4    35.526000
+5    32.484286
+Name: price_num, dtype: float64
+
+Books per scraped page:
+page
+1    20
+2    20
+3    20
+Name: count, dtype: int64
+
+=== STEP 6: TRENDS & ANOMALIES ===
+Total books: 60
+Most common rating: 1
+Least common rating: 2
+Cheapest book: In Her Wake (£12.84)
+Most expensive book: Slow States of Collapse: Poems (£57.31)
+Average price: £35.00
+Price range: £12.84 to £57.31
+
+Price outliers (IQR method): 0 books
+
+=== STEP 7: HYPOTHESIS TEST ===
+Hypothesis: Higher-rated books cost more on average.
+Correlation (price vs rating): -0.027
+Result: No strong link between rating and price in this dataset.
+
+=== STEP 8: ANSWERS TO RESEARCH QUESTIONS ===
+1. Dataset has 60 books.
+2. Most common rating: 1 | Least common: 2
+3. Price range: £12.84 - £57.31 | Avg: £35.00
+4. Correlation price vs rating: -0.027 — No strong link between rating and price in this dataset.
+5. Missing values: none | Duplicates removed: checked
